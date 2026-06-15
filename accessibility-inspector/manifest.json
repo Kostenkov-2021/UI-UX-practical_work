@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "Инспектор доступности",
+  "version": "1.1",
+  "description": "Расширение для проверки доступности сайтов",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Проверка доступности сайта"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "utils/color-utils.js",
+        "utils/a11y-rules.js",
+        "utils/doka-links.js",
+        "utils/report-generator.js",
+        "utils/language-detector.js",
+        "content-script.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Предпросмотр отчёта</title>
+    <meta charset="utf-8">
+    <script src="marked.min.js"></script>
+    <meta http-equiv="Content-Security-Policy" 
+      content="script-src 'self' 'unsafe-inline'">
+    <link rel="stylesheet" href="report-popup.css">
+</head>
+<body id="popup-body-report">
+    <nav class="menu">
+        <h1>Предпросмотр отчёта о доступности сайта</h1>
+        <div class="menu__download">
+            <label for="selectAsFormatIn">Формат отчёта</label>
+            <select id="selectAsFormatIn">
+                <option value="html">HTML</option>
+                <option value="json">JSON</option>
+                <option value="markdown">MARKDOWN</option>
+            </select>
+            <button class="primary-btn" id="downloadAsFormat"> Скачать </button>
+        </div>
+    </nav>
+    <div id="report--content--html">
+        <header class="summary">
+            <h2 class="sumarry__title">Общее</h1>
+            <div class="about__list">
+                <div class="about__list_item">
+                    <strong>Сайт: </strong>
+                    <a id="summary--about--showurl"></a>
+                </div>
+                <div class="about__list_item">
+                    <strong>Дата отчёта: </strong>
+                    <p id="summary--about--showdatetime"></p>
+                </div>
+                <div class="about__list_item">
+                    <strong>Всего проблем: </strong>
+                    <p id="summary--about--total">0</p>
+                </div>
+                <div class="about__list_item">
+                    <strong>Предупреждений: </strong>
+                    <p id="summary--about--warnings">0</p>
+                </div>
+                <span class="about__list_item">
+                    <strong>Ошибок: </strong>
+                    <p id="summary--about--errors">0</p>
+                </div>
+            
+        </header>
+        <main>
+            <h2>Подробности</h2>
+            <div class="issues__controls">
+                <div class="issues__controls__selector">
+                    <label for="selector-by-issues-types">По типу проблемы</label>
+                    <select id="selector-by-issues-types">
+                        <option value="null"> -- Не выбрано --</option>
+                    </select>
+                </div>
+                <div class="issues__controls__selector">
+                    <label for="selector-by-categorys">По категории</label>
+                    <select id="selector-by-categorys">
+                        <option value="null"> -- Не выбрано --</option>
+                    </select>
+                </div>
+                <div class="issues__controls__buttons">
+                    <button class="primary-btn" id="btn-expand-issues">Развернуть всё</button>
+                    <div class="issues__controls__buttons__filters">
+                        <button class="secondary-btn" id="btn-reset-filters">Сбросить фильтры</button>
+                        <button class="primary-btn" id="btn-accept-filters">Применить фильтры</button>
+                    </div>
+                </div>
+            </div>
+            <div id="issues__list"></div>
+        </main>
+    </div>
+    <div id="report--content--markdown" hidden>
+        <div id="report--content--markdown--preview"></div>
+    </div>
+    <div id="report-content--json" hidden>
+        <pre><code id="report-content--json--preview" class="issues__list__details__code"></code></pre>
+    </div>
+    <script src="../utils/doka-links.js"></script>
+    <script src="report-popup.js"></script>
+    <script src="report-popup-local.js"></script>
+</body>
+</html>
