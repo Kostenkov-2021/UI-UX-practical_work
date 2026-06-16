@@ -1,0 +1,21 @@
+services:
+  chromium-accessibility-inspector:
+    build:
+      context: .
+      dockerfile: docker/chromium-accessibility-inspector/Dockerfile
+    image: accessibility-inspector-chromium:latest
+    container_name: accessibility-inspector-chromium
+    environment:
+      DISPLAY_WIDTH: "1440"
+      DISPLAY_HEIGHT: "900"
+      DISPLAY_DEPTH: "24"
+      START_URL: "about:blank"
+    ports:
+      - "127.0.0.1:6150:6080"
+      - "127.0.0.1:9222:9222"
+    volumes:
+      - chromium-profile:/profile
+    shm_size: "2gb"
+
+volumes:
+  chromium-profile:
