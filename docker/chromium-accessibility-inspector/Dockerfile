@@ -12,10 +12,9 @@ RUN apt-get -o Acquire::Retries=5 update \
         fonts-liberation \
         fonts-noto \
         fonts-noto-color-emoji \
-        novnc \
+        nodejs \
         procps \
         supervisor \
-        websockify \
         x11vnc \
         xauth \
         xvfb \
@@ -41,6 +40,6 @@ ENV START_URL=about:blank
 ENV EXTENSION_PATH=/opt/accessibility-inspector
 ENV CHROMIUM_USER_DATA_DIR=/profile
 
-EXPOSE 6080 9222
+EXPOSE 9222
 
 CMD ["/usr/local/bin/start-chromium"]

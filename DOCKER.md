@@ -12,12 +12,6 @@
 docker compose up --build
 ```
 
-Открыть интерфейс браузера:
-
-```text
-http://localhost:6150/vnc.html
-```
-
 Endpoint удалённой отладки Chromium доступен по адресу:
 
 ```text

@@ -20,9 +20,6 @@ FLUXBOX_PID=$!
 x11vnc -display "${DISPLAY}" -forever -shared -nopw -rfbport 5900 >/tmp/x11vnc.log 2>&1 &
 X11VNC_PID=$!
 
-websockify --web=/usr/share/novnc 6080 localhost:5900 >/tmp/novnc.log 2>&1 &
-NOVNC_PID=$!
-
 node -e '
 const net = require("net");
 const listenPort = Number(process.env.DEBUG_FORWARD_PORT || 9222);
@@ -38,7 +35,7 @@ net.createServer((client) => {
 DEBUG_FORWARD_PID=$!
 
 cleanup() {
-  kill "${DEBUG_FORWARD_PID}" "${NOVNC_PID}" "${X11VNC_PID}" "${FLUXBOX_PID}" "${XVFB_PID}" 2>/dev/null || true
+  kill "${DEBUG_FORWARD_PID}" "${X11VNC_PID}" "${FLUXBOX_PID}" "${XVFB_PID}" 2>/dev/null || true
 }
 trap cleanup EXIT INT TERM
 
